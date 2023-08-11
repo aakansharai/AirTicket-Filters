@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterFragments.PriceFilterfragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="right"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Up to 69,042 "
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/pricefilter"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pricefilter"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="18dp"
+            android:id="@+id/seekbarprice"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4,803 "
+            android:textSize="16dp"
+            android:layout_below="@id/seekbarprice"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/Minprice"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4,803 "
+            android:textSize="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/seekbarprice"
+            android:layout_marginTop="20dp"
+android:layout_marginRight="25dp"
+            android:id="@+id/Maxprice"/>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

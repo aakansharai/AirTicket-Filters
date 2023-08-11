@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DepartureTabFragment">
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:orientation="vertical"
+        android:id="@+id/departurefilter"
+        android:background="#EAE8E8"
+        android:layout_marginTop="0dp"
+        android:layout_height="500dp">
+
+        <TextView
+            android:id="@+id/stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="18dp"
+            android:text="Stops"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Departure\n Time"
+            android:padding="14dp"
+            android:gravity="start"
+            android:id="@+id/Departuretime"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Arrival\n Time"
+            android:padding="16dp"
+            android:gravity="start"
+            android:id="@+id/Arrivaltime"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:padding="16dp"
+            android:id="@+id/Pricedeparture"
+            android:gravity="start"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Airline"
+            android:padding="16dp"
+            android:gravity="start"
+            android:id="@+id/departureAirline"
+            android:textSize="16dp"/>
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="310dp"
+        android:layout_height="500dp"
+        android:padding="18dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/departureframelayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linearvisibility"
+            android:layout_gravity="right">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/stoplinear"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Non-Stop"
+                    android:textSize="17dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/DepartueNonStop"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/departureNonStopChk"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/onestoplinear"
+                android:layout_below="@id/stoplinear"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 Stop"
+                    android:layout_centerVertical="true"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/DepartueOneStop"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/departureOneStopChk"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/onestoplinear"
+                android:id="@+id/oneplusStoplinear"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1+ Stops"
+                    android:layout_centerVertical="true"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/DepartueOnePlusStop"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/departureOnePlusStopChk"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+    
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_below="@id/departurefilter"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:backgroundTint="@color/black"
+            android:layout_marginRight="20dp"
+            android:text="Reset"
+            android:id="@+id/resetBtn"
+            android:layout_weight="1"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply"
+            android:backgroundTint="@color/black"
+            android:id="@+id/applyBtn"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

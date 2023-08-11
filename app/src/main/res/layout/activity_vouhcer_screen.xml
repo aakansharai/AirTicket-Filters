@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoucherScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollview">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="start"
+            android:id="@+id/linearlayoutvoucher">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Federal Credit Card Domesti..."
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/VoucherAdsImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/img_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="About the offer"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/aboutOffer"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:padding="5dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/linearCouponCode">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_4"
+                android:layout_centerVertical="true"
+                android:id="@+id/CouponcodeImage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coupon Code"
+                android:layout_marginLeft="60dp"
+                android:id="@+id/CouponCode"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FEDOMC"
+                android:textStyle="bold"
+                android:layout_marginLeft="60dp"
+                android:id="@+id/fedrel"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/CouponCode"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_5"
+                android:layout_below="@+id/CouponCode"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="6dp"/>
+
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+
+                android:id="@+id/linear2CouponCode">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_6"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/RupeeImage"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saving"
+                    android:layout_marginLeft="60dp"
+                    android:id="@+id/Saving"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Up to INR 2,000 off on domestic flights"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="60dp"
+                    android:id="@+id/Upto"
+                    android:layout_marginTop="6dp"
+                    android:layout_below="@id/Saving"/>
+
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+
+                android:id="@+id/linear3CouponCode">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_7"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/calenderImage"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Valid Upto"
+                    android:layout_marginLeft="60dp"
+                    android:id="@+id/Validupto"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="29 Sep 2023"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="60dp"
+                    android:id="@+id/ValiduptoDate"
+                    android:layout_marginTop="6dp"
+                    android:layout_below="@id/Validupto"/>
+
+
+
+
+
+            </RelativeLayout>
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="20dp"
+    android:textSize="15dp"
+    android:text="Get 12% instant discount of up to INR\n2,000 on paying with Fedral Bank\n Credit Card for demestic flights on a minimum transaction of INR 5,000."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terms Condition"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginRight="20dp"
+            android:text="1. Federal Bank Credit Card holders are eligible for\n    12% instant discount, up to INR 2,000/- (Rupees Two \n    Thousand only), on minimum booking value of\n    INR 5,000/- (Rupees Five Thousand only) using\n    FEDOMC  during the offer period to purchase\n    or book on Adani One only."
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginRight="20dp"
+android:text="2. To avail of the offer, the customer must ente the\n    coupon code FEDOMC before making the payment."
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="3. Offer is appliable on every Thursday and Friday\n   starting 22nd June, 2023 from 00:01 hr till 29th\n   September 2023 ending at 23:59 hr (offer period)."
+            android:layout_marginTop="20dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            android:text="4. The offer is valid once per card per promo per month."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+android:text="5. All bookings are subject to availability."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:text="6. The offer is not applicable on EMI transactions."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            android:text="7. The offer is not applicable on Jupiter/EpiFi Cards."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+android:text="8. The offer is not applicable on Federal OneCard/EpiFi/\n    Scapia Credit Cards."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+android:text="9. The offer cannot be combined with any other offers."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+android:text="10. The offer is non-negotiable, non-transferrable and\n      non-cashable."
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+android:text="11. The offer being provided is funded by Federal Bank \n    and Adani Group and any queries related to the \n    source"            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+android:text="12. Incomplete/rejected/invalid/returned/disputed or\n      unauthorised/fraudulent transactions will not be\n      considered "
+                android:layout_marginTop="20dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+                android:text="13. In case a customer pays through reward points\n      partly for the order, customer shall be eligible to\n     get the benefit of instant discount only if the\n     'paid amount through card + value of discount availed’ "
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+android:text="14. Adani Digital and Federal Bank reserve the right \n      to add/alter/change or vary at any time, without notice,\n      any or all of these terms and conditions or to replace,\n      entirely or in part, this offer by another offer, whether\n      similar to this offer or not, or to withdraw it altogether.\n      They also reserve the right to discontinue the\n      offer without assigning any reason and/or without\n      any prior intimation whatsoever. "
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+android:text="15. Adani Digital and Federal Bank reserve the right to\n       disqualify any cardholder from the benefits of the offer \n       if any fraudulent activity is identified as being carried \n      out for the purpose of availing the benefits under the\n       offer or otherwise by use of the card."
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+android:text="16. The participation in the offer is entirely voluntary and\n       it is understood that the participation by the \n       cardholders shall be deemed to have been \n       made on a voluntary basis."
+                android:layout_marginTop="20dp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

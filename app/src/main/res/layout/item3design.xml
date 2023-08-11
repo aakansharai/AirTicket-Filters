@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:background="@drawable/item3shape"
+        android:orientation="horizontal"
+        android:id="@+id/item3l">
+
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="20dp"
+           android:id="@+id/item3R">
+
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="30dp"
+               android:src="@drawable/img_1"
+               android:id="@+id/item3image"/>
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Indigo"
+               android:textSize="12dp"
+               android:id="@+id/item3indigotext"
+               android:layout_below="@id/item3image"/>
+
+       </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/item3Relative2">
+
+
+            <TextView
+                android:id="@+id/departureTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19:55"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/deviderBtweenTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginStart="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/departureTime"
+                app:layout_constraintStart_toEndOf="@+id/departureTime"
+                app:layout_constraintTop_toTopOf="@+id/departureTime" />
+
+            <TextView
+                android:id="@+id/arrivalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21 :40"
+                android:textSize="15sp"
+                android:layout_marginStart="3dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/deviderBtweenTime"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01h 45m "
+                android:textSize="12sp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="8dp"
+                android:id="@+id/item3Nonstop"
+                app:layout_constraintTop_toBottomOf="@id/departureTime"
+                app:layout_constraintStart_toStartOf="@+id/departureTime"/>
+
+            <TextView
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/departureTime"
+                android:layout_alignRight="@id/item3Nonstop"
+                android:text=" | "
+                android:textSize="12dp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/item3Nonstop"
+                app:layout_constraintStart_toEndOf="@+id/item3Nonstop"
+                app:layout_constraintTop_toTopOf="@+id/item3Nonstop" />
+
+            <TextView
+                android:id="@+id/stops"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Non-stop"
+                android:textSize="12sp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider"
+                app:layout_constraintTop_toTopOf="@+id/divider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹4,063"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:id="@+id/item3price"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

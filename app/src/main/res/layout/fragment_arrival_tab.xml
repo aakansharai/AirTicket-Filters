@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DepartureTabFragment">
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:orientation="vertical"
+        android:id="@+id/departurefilter"
+        android:background="#EAE8E8"
+        android:layout_marginTop="0dp"
+        android:layout_height="500dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stops"
+            android:padding="18dp"
+            android:gravity="start"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Departure\n Time"
+            android:padding="18dp"
+            android:gravity="start"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Arrival\n Time"
+            android:padding="18dp"
+            android:gravity="start"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:padding="18dp"
+            android:gravity="start"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Airline"
+            android:padding="18dp"
+            android:gravity="start"
+            android:textSize="20dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_below="@id/departurefilter"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:backgroundTint="@color/black"
+            android:layout_marginRight="20dp"
+            android:text="Reset"
+            android:id="@+id/resetBtn"
+            android:layout_weight="1"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="Apply"
+            android:backgroundTint="@color/black"
+            android:id="@+id/applyBtn"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

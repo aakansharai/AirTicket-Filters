@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fraamelayoutStopfilter"
+    tools:context=".FilterFragments.StopfilterFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+android:layout_gravity="right">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/stoplinear"
+    android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non-Stop"
+            android:textSize="17dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:layout_marginLeft="40dp"
+        android:id="@+id/DepartueNonStop"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_alignParentRight="true"
+android:layout_marginRight="40dp"
+            android:id="@+id/departureNonStopChk"/>
+</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/onestoplinear"
+            android:layout_below="@id/stoplinear"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Stop"
+            android:layout_centerVertical="true"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:id="@+id/DepartueOneStop"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/departureOneStopChk"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_below="@id/onestoplinear"
+        android:id="@+id/oneplusStoplinear"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1+ Stops"
+            android:layout_centerVertical="true"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="40dp"
+            android:id="@+id/DepartueOnePlusStop"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:id="@+id/departureOnePlusStopChk"/>
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

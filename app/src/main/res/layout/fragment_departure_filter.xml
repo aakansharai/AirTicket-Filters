@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterFragments.DepartureFilterFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="right">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:id="@+id/linearEarrlymorning"
+    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Early Morning"
+            android:textSize="17dp"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:id="@+id/Earlymorning"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12am - 8am"
+            android:textSize="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/EarlymorningTime"
+android:layout_alignParentEnd="true"
+android:layout_marginRight="50dp"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/EarlyMorningCHK"/>
+
+</RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_below="@id/linearEarrlymorning"
+            android:id="@+id/linearmorning"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Morning"
+                android:textSize="17dp"
+                android:layout_marginLeft="15dp"
+
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:id="@+id/morning"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8am - 12pm"
+                android:id="@+id/morningTime"
+                android:textSize="10sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="50dp"                android:textAlignment="center"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/morningChk"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/linearmorning"
+            android:id="@+id/linearMidDay"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mid Day"
+                android:layout_marginLeft="15dp"
+
+                android:textSize="17dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:id="@+id/MidDay"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12pm - 4pm"
+                android:id="@+id/MidDayTime"
+                android:layout_alignParentEnd="true"
+                android:textSize="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/MidDayChk"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/linearMidDay"
+            android:id="@+id/linearEvening"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evening"
+                android:layout_marginLeft="15dp"
+
+                android:layout_centerVertical="true"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:id="@+id/Evening"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4pm - 8pm"
+                android:id="@+id/EveningTime"
+                android:layout_alignParentEnd="true"
+                android:textSize="10dp"
+android:layout_centerVertical="true"
+android:layout_marginRight="50dp"                android:textAlignment="center"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/EveningChk"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@id/linearEvening"
+            android:id="@+id/linearNight"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Night"
+                android:textSize="17dp"
+                android:layout_marginLeft="15dp"
+
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:id="@+id/Night"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8pm - 12am"
+                android:id="@+id/NightTime"
+                android:layout_alignParentEnd="true"
+                android:textSize="10dp"
+
+android:layout_centerVertical="true"
+                android:layout_marginRight="50dp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="6dp"
+                android:id="@+id/Nightchk"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
