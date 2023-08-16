@@ -19,6 +19,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public ViewPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
+
     }
 
     @Override
@@ -61,4 +62,5 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 5; // Total number of fragments
     }
+
 }

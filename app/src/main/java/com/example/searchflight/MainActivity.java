@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         int ARRIVAL_ACCESS_CODE = getIntent().getIntExtra("REQUEST_CODE_ARRIVAL", 0);
 //        int PRICE_ACCESS_CODE = getIntent().getIntExtra("REQUEST_CODE_DEPARTURE", 0);
 
+        Log.e("CODE", ACCESS_CODE+" "+DEPARTURE_ACCESS_CODE);
 
         Adapter1voucher adapter1voucher=new Adapter1voucher(model1vouchers, new Adapter1voucher.ItemClickLisener() {
             @Override
@@ -197,11 +198,11 @@ public class MainActivity extends AppCompatActivity {
         else if(ACCESS_CODE==1212) {
             testing.clear();
             for(i=0; i<model3Aeroplanes.size(); i++){
-                if(model3Aeroplanes.get(i).getDepartureTime()>720 && model3Aeroplanes.get(i).getDepartureTime()<=960){
-                    testing.add(model3Aeroplanes.get(i));
+                if(model3Aeroplanes.get(i).getStops()<2){
+                    one_Non_STOPS.add(model3Aeroplanes.get(i));
                 }
             }
-            Adapter3Aeroplane adapter3Aeroplane =new Adapter3Aeroplane(one_Non_STOPS);
+            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(one_Non_STOPS);
             recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
             recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
         }

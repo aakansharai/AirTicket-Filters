@@ -14,6 +14,7 @@
         android:layout_height="500dp">
 
         <TextView
+            android:id="@+id/ArrStops"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Stops"
@@ -22,6 +23,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            android:id="@+id/ArrDepartureTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Departure\n Time"
@@ -30,6 +32,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            android:id="@+id/ArrArrivalTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Arrival\n Time"
@@ -38,6 +41,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            android:id="@+id/ArrPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Price"
@@ -46,6 +50,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            android:id="@+id/ArrAirline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Airline"
@@ -87,5 +92,26 @@
             android:textColor="@color/white"/>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="310dp"
+        android:layout_height="500dp"
+        android:padding="18dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/ArrivalFramelayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linearvisibility"
+            android:layout_gravity="right">
+
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
 
 </RelativeLayout>

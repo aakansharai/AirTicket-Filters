@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,13 +98,13 @@ public class DepartureTabFragment extends Fragment {
         departureTimeCheck = view.findViewById(R.id.departureTime);
         ArrivalTimeCheck = view.findViewById(R.id.arrivalTime);
 
+//        int index = viewPager.getCurrentItem();
 
         replacefragment(new StopfilterFragment());
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replacefragment(new StopfilterFragment());
-
             }
         });
 
@@ -119,8 +120,6 @@ public class DepartureTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 replacefragment(new ArrivalFilterFragment());
-//                linearLayout.setVisibility(View.INVISIBLE);
-
             }
         });
 
@@ -144,6 +143,21 @@ public class DepartureTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                assert getFragmentManager() != null;
+                StopfilterFragment stopFragmentInstance = (StopfilterFragment) getChildFragmentManager().getFragments().get(0);
+//                StopfilterFragment stopFragmentInstance = (StopfilterFragment) getChildFragmentManager().getFragments().get(0);
+
+//                DepartureFilterFragment dep = (DepartureFilterFragment) new ViewPagerAdapter(DepartureFilterFragment).getItem(1);
+                int len = getChildFragmentManager().getFragments().size();
+
+//                ViewPagerAdapter adapter = ((ViewPagerAdapter) viewPager.getAdapter());
+//                final DepartureFilterFragment tabFragment = (DepartureFilterFragment) adapter.getFragment(1);
+
+                nonStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureNonStopChk);
+                oneStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureOneStopChk);
+                moreThenOneStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureOnePlusStopChk);
+                Log.e("HEHE", len+"\n \n "+getChildFragmentManager().getFragments().get(0)+"\n "+getParentFragmentManager().getFragments().get(0)+"\n "+getParentFragmentManager().getFragments().get(1));
+
                 Intent intent = new Intent(getContext(), MainActivity.class);
 
                 if (nonStopCHK.isChecked()) {
@@ -156,14 +170,12 @@ public class DepartureTabFragment extends Fragment {
                     } else {
                         REQUEST_CODE_STOPS = 3200;
                     }
-
                 } else if (oneStopCHK.isChecked()) {
                     if (moreThenOneStopCHK.isChecked()) {
                         REQUEST_CODE_STOPS = 2323;
                     } else {
                         REQUEST_CODE_STOPS = 3300;
                     }
-
                 } else if (moreThenOneStopCHK.isChecked()) {
                     REQUEST_CODE_STOPS = 3400;
                 }
@@ -306,14 +318,10 @@ public class DepartureTabFragment extends Fragment {
         resetbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
-
             }
         });
-
 
         return view;
     }
