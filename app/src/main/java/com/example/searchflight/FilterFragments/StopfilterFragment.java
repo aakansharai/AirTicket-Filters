@@ -43,7 +43,7 @@ public class StopfilterFragment extends Fragment {
          prefOneStop = getActivity().getSharedPreferences(PREFS_NAME_ONE, 0);
          prefMoreThenOne = getActivity().getSharedPreferences(PREFS_NAME_MORE, 0);
 
-        boolean isCheckedNone = prefsNonStop.getBoolean(CHECKBOX_KEY_NON, false);
+        boolean isCheckedNone = prefsNonStop.getBoolean(CHECKBOX_KEY_NON, true);
         boolean isCheckedOne = prefOneStop.getBoolean(CHECKBOX_KEY_ONE, false);
         boolean isCheckedMore = prefMoreThenOne.getBoolean(CHECKBOX_KEY_MORE, false);
 

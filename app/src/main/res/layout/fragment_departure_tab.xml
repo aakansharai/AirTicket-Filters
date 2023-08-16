@@ -76,79 +76,79 @@
             android:id="@+id/linearvisibility"
             android:layout_gravity="right">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/stoplinear"
-                android:orientation="horizontal">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/stoplinear"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Non-Stop"
-                    android:textSize="17dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="40dp"
-                    android:id="@+id/DepartueNonStop"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Non-Stop"-->
+<!--                    android:textSize="17dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginLeft="40dp"-->
+<!--                    android:id="@+id/DepartueNonStop"/>-->
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dp"
-                    android:id="@+id/departureNonStopChk"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/onestoplinear"
-                android:layout_below="@id/stoplinear"
-                android:orientation="horizontal">
+<!--                <CheckBox-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="40dp"-->
+<!--                    android:id="@+id/departureNonStopChk"/>-->
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/onestoplinear"-->
+<!--                android:layout_below="@id/stoplinear"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 Stop"
-                    android:layout_centerVertical="true"
-                    android:textSize="17dp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="40dp"
-                    android:id="@+id/DepartueOneStop"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="1 Stop"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:textSize="17dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginLeft="40dp"-->
+<!--                    android:id="@+id/DepartueOneStop"/>-->
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/departureOneStopChk"/>
-            </RelativeLayout>
+<!--                <CheckBox-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="40dp"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:id="@+id/departureOneStopChk"/>-->
+<!--            </RelativeLayout>-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/onestoplinear"
-                android:id="@+id/oneplusStoplinear"
-                android:orientation="horizontal">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/onestoplinear"-->
+<!--                android:id="@+id/oneplusStoplinear"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1+ Stops"
-                    android:layout_centerVertical="true"
-                    android:textSize="17dp"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="40dp"
-                    android:id="@+id/DepartueOnePlusStop"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="1+ Stops"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:textSize="17dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginLeft="40dp"-->
+<!--                    android:id="@+id/DepartueOnePlusStop"/>-->
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dp"
-                    android:id="@+id/departureOnePlusStopChk"/>
-            </RelativeLayout>
+<!--                <CheckBox-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="40dp"-->
+<!--                    android:id="@+id/departureOnePlusStopChk"/>-->
+<!--            </RelativeLayout>-->
 
         </LinearLayout>
 
