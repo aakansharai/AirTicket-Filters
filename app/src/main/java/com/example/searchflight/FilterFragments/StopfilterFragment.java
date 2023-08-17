@@ -18,6 +18,8 @@ import java.util.Collections;
 public class StopfilterFragment extends Fragment {
     CheckBox nonStop, oneStop, onePlusStop;
 //    TextView Nonstop, onestop, oneplusStop;
+    Bundle bundle = new Bundle();
+    int STOP_CODE;
     private SharedPreferences prefsNonStop, prefOneStop, prefMoreThenOne;
 
     private static final String PREFS_NAME_NON = "MyPrefs_NonSTOP";
@@ -38,6 +40,30 @@ public class StopfilterFragment extends Fragment {
         nonStop = view.findViewById(R.id.departureNonStopChk);
         oneStop = view.findViewById(R.id.departureOneStopChk);
         onePlusStop = view.findViewById(R.id.departureOnePlusStopChk);
+
+        if (nonStop.isChecked()) {
+            if (oneStop.isChecked() && onePlusStop.isChecked()) {
+                STOP_CODE = 1111;
+            } else if (oneStop.isChecked()) {
+                STOP_CODE = 1212;
+            } else if (onePlusStop.isChecked()) {
+                STOP_CODE = 1313;
+            } else {
+                STOP_CODE = 3200;
+            }
+        } else if (oneStop.isChecked()) {
+            if (onePlusStop.isChecked()) {
+                STOP_CODE = 2323;
+            } else {
+                STOP_CODE = 3300;
+            }
+        } else if (onePlusStop.isChecked()) {
+            STOP_CODE = 3400;
+        }
+
+
+
+//==============  S H A R E D  -  P R E F E R E N C E  --  F R A G M E N T S =================
 
          prefsNonStop = getActivity().getSharedPreferences(PREFS_NAME_ONE, 0);
          prefOneStop = getActivity().getSharedPreferences(PREFS_NAME_ONE, 0);
@@ -66,6 +92,11 @@ public class StopfilterFragment extends Fragment {
             editor.putBoolean(CHECKBOX_KEY_MORE, isChecked_);
             editor.apply();
         });
+
+//        bundle = getActivity().getIntent().getExtras();
+//        assert bundle != null;
+//        bundle.putInt("REQUEST-CODE_STOP", 123);
+//        this.setArguments(bundle);
 
         return view;
     }

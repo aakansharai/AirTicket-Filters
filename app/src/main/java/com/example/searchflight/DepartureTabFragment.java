@@ -12,6 +12,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
@@ -23,7 +25,9 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.searchflight.Adapterclass.Adapter3Aeroplane;
 import com.example.searchflight.FilterFragments.AirlineFilterFragment;
 import com.example.searchflight.FilterFragments.ArrivalFilterFragment;
 import com.example.searchflight.FilterFragments.DepartureFilterFragment;
@@ -32,6 +36,8 @@ import com.example.searchflight.FilterFragments.StopfilterFragment;
 import com.example.searchflight.Modelclass.FilterAirlineModelclass;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class DepartureTabFragment extends Fragment {
@@ -50,6 +56,10 @@ public class DepartureTabFragment extends Fragment {
     CheckBox EarlyMorning, Morning, MidDay, Evening, Night, EarlyMorningArrival, MorningArrival, MidDayArrival, EveningArrival, NightArrival;
     ArrayList<FilterAirlineModelclass> filterAirlineModelClasses = new ArrayList<>();
 
+    RecyclerView filterRV;
+//    RecyclerView filterValuesRV;
+    Adapter3Aeroplane filterAdapter;
+    int STOP_CODE;
 
     public DepartureTabFragment() {
         // Required empty public constructor
@@ -65,15 +75,18 @@ public class DepartureTabFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_departure_tab, container, false);
 
+        if (getArguments() != null)
+        {
+            STOP_CODE = getArguments().getInt("yourKey");
+        }
         applybtn = view.findViewById(R.id.applyBtn);
         resetbtn = view.findViewById(R.id.resetBtn);
         linearLayout = view.findViewById(R.id.linearvisibility);
 
-        frameLayout = view.findViewById(R.id.fraamelayoutStopfilter);
+        frameLayout = view.findViewById(R.id.stopFilterFragment);
         stop = view.findViewById(R.id.stop);
         departureTime = view.findViewById(R.id.Departuretime);
         ArrivalTime = view.findViewById(R.id.Arrivaltime);
-
 
         EarlyMorning = view.findViewById(R.id.EarlyMorningCHK);
         Morning = view.findViewById(R.id.morningChk);
@@ -98,8 +111,8 @@ public class DepartureTabFragment extends Fragment {
         departureTimeCheck = view.findViewById(R.id.departureTime);
         ArrivalTimeCheck = view.findViewById(R.id.arrivalTime);
 
-//        int index = viewPager.getCurrentItem();
 
+//===============   R E P L A C E M E N T   O F    F R A G M E N T S ==========
         replacefragment(new StopfilterFragment());
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,41 +157,78 @@ public class DepartureTabFragment extends Fragment {
             public void onClick(View view) {
 
                 assert getFragmentManager() != null;
-                StopfilterFragment stopFragmentInstance = (StopfilterFragment) getChildFragmentManager().getFragments().get(0);
-//                StopfilterFragment stopFragmentInstance = (StopfilterFragment) getChildFragmentManager().getFragments().get(0);
-
-//                DepartureFilterFragment dep = (DepartureFilterFragment) new ViewPagerAdapter(DepartureFilterFragment).getItem(1);
                 int len = getChildFragmentManager().getFragments().size();
-
-//                ViewPagerAdapter adapter = ((ViewPagerAdapter) viewPager.getAdapter());
-//                final DepartureFilterFragment tabFragment = (DepartureFilterFragment) adapter.getFragment(1);
-
-                nonStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureNonStopChk);
-                oneStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureOneStopChk);
-                moreThenOneStopCHK = stopFragmentInstance.getView().findViewById(R.id.departureOnePlusStopChk);
                 Log.e("HEHE", len+"\n \n "+getChildFragmentManager().getFragments().get(0)+"\n "+getParentFragmentManager().getFragments().get(0)+"\n "+getParentFragmentManager().getFragments().get(1));
+
+//                StopfilterFragment stopFragment = (StopfilterFragment) getChildFragmentManager().getFragments().get(0);
+
+                StopfilterFragment stopFragment = new StopfilterFragment();
+
+                Fragment current = (Fragment) getChildFragmentManager().getFragments().get(0);
+//                DepartureTabFragment dep = (DepartureTabFragment) getParentFragmentManager().getFragments().get(1);
+//
+//                Fragment departure = getParentFragmentManager().findFragmentById(R.id.departureFilterFragment);
+//                Log.e("DEPARTURE_FRAGMENT", departure+"");
+//                int length = dep.getChildFragmentManager().getFragments().size();
+
+                if(Objects.equals(current, stopFragment)){
+
+                    nonStopCHK = stopFragment.getView().findViewById(R.id.departureNonStopChk);
+                    oneStopCHK = stopFragment.getView().findViewById(R.id.departureOneStopChk);
+                    moreThenOneStopCHK = stopFragment.getView().findViewById(R.id.departureOnePlusStopChk);
+//                    Log.e("DEPARTURE", length + " " + dep.getChildFragmentManager().getFragments().get(0));
+
+
+                    if (nonStopCHK.isChecked()) {
+                        if (oneStopCHK.isChecked() && moreThenOneStopCHK.isChecked()) {
+                            REQUEST_CODE_STOPS = 1111;
+                        } else if (oneStopCHK.isChecked()) {
+                            REQUEST_CODE_STOPS = 1212;
+                        } else if (moreThenOneStopCHK.isChecked()) {
+                            REQUEST_CODE_STOPS = 1313;
+                        } else {
+                            REQUEST_CODE_STOPS = 3200;
+                        }
+                    } else if (oneStopCHK.isChecked()) {
+                        if (moreThenOneStopCHK.isChecked()) {
+                            REQUEST_CODE_STOPS = 2323;
+                        } else {
+                            REQUEST_CODE_STOPS = 3300;
+                        }
+                    } else if (moreThenOneStopCHK.isChecked()) {
+                        REQUEST_CODE_STOPS = 3400;
+                    }
+                }
+
+//                nonStopCHK = stopFragment.getView().findViewById(R.id.departureNonStopChk);
+//                oneStopCHK = stopFragment.getView().findViewById(R.id.departureOneStopChk);
+//                moreThenOneStopCHK = stopFragment.getView().findViewById(R.id.departureOnePlusStopChk);
+////                Log.e("DEPARTURE", length + " " + dep.getChildFragmentManager().getFragments().get(0));
+//
+//
+//                if (nonStopCHK.isChecked()) {
+//                    if (oneStopCHK.isChecked() && moreThenOneStopCHK.isChecked()) {
+//                        REQUEST_CODE_STOPS = 1111;
+//                    } else if (oneStopCHK.isChecked()) {
+//                        REQUEST_CODE_STOPS = 1212;
+//                    } else if (moreThenOneStopCHK.isChecked()) {
+//                        REQUEST_CODE_STOPS = 1313;
+//                    } else {
+//                        REQUEST_CODE_STOPS = 3200;
+//                    }
+//                } else if (oneStopCHK.isChecked()) {
+//                    if (moreThenOneStopCHK.isChecked()) {
+//                        REQUEST_CODE_STOPS = 2323;
+//                    } else {
+//                        REQUEST_CODE_STOPS = 3300;
+//                    }
+//                } else if (moreThenOneStopCHK.isChecked()) {
+//                    REQUEST_CODE_STOPS = 3400;
+//                }
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
 
-                if (nonStopCHK.isChecked()) {
-                    if (oneStopCHK.isChecked() && moreThenOneStopCHK.isChecked()) {
-                        REQUEST_CODE_STOPS = 1111;
-                    } else if (oneStopCHK.isChecked()) {
-                        REQUEST_CODE_STOPS = 1212;
-                    } else if (moreThenOneStopCHK.isChecked()) {
-                        REQUEST_CODE_STOPS = 1313;
-                    } else {
-                        REQUEST_CODE_STOPS = 3200;
-                    }
-                } else if (oneStopCHK.isChecked()) {
-                    if (moreThenOneStopCHK.isChecked()) {
-                        REQUEST_CODE_STOPS = 2323;
-                    } else {
-                        REQUEST_CODE_STOPS = 3300;
-                    }
-                } else if (moreThenOneStopCHK.isChecked()) {
-                    REQUEST_CODE_STOPS = 3400;
-                }
+
 
 //                int DEP_REQUEST = CheckDepartureTime();
 
@@ -298,8 +348,9 @@ public class DepartureTabFragment extends Fragment {
 //                    }
 //                } else if(NightArrival.isChecked()) {
 //                    ARRIVAL_REQ = 333;
+//                    ARRIVAL_REQ = 333;
 //                } else {
-//                    ARRIVAL_REQ = 0;
+//                    ARRIVAL_REQ = 203;
 //                }
 
                 intent.putExtra("REQUEST_CODE_STOPS", REQUEST_CODE_STOPS);
@@ -311,7 +362,6 @@ public class DepartureTabFragment extends Fragment {
                 startActivity(intent);
 
             }
-
 
         });
 
@@ -332,6 +382,60 @@ public class DepartureTabFragment extends Fragment {
         fragmentTransaction.replace(R.id.departureframelayout, departureFilterFragment);
         fragmentTransaction.commit();
     }
+
+    private void initControls() {
+//        filterRV =
+//        filterValuesRV = findViewById(R.id.filterValuesRV);
+//        filterRV.setLayoutManager(new LinearLayoutManager(this));
+//        filterValuesRV.setLayoutManager(new LinearLayoutManager(this));
+
+        List<String> stops = Arrays.asList(new String[]{"0", "1", "2", "3"});
+        if (!PreferencesHM.filters.containsKey(FilterMy.INDEX_STOPS)) {
+            PreferencesHM.filters.put(FilterMy.INDEX_STOPS, (com.example.searchflight.FilterMy) new com.example.searchflight.FilterMy("Color", stops, new ArrayList()));
+        }
+        List<String> depTime = Arrays.asList(new String[]{"0-420", "420-", "14", "16", "18", "20"});
+        if (!PreferencesHM.filters.containsKey(FilterMy.INDEX_DEPARTURE)) {
+            PreferencesHM.filters.put(FilterMy.INDEX_DEPARTURE, (com.example.searchflight.FilterMy) new com.example.searchflight.FilterMy("departureTime", depTime, new ArrayList()));
+        }
+        List<String> arrTime = Arrays.asList(new String[]{"10", "12", "14", "16", "18", "20"});
+        if (!PreferencesHM.filters.containsKey(FilterMy.INDEX_ARRIVAL)) {
+            PreferencesHM.filters.put(FilterMy.INDEX_ARRIVAL, (com.example.searchflight.FilterMy) new com.example.searchflight.FilterMy("arrivalTime", arrTime, new ArrayList()));
+        }
+        List<String> airline = Arrays.asList(new String[]{"10", "12", "14", "16", "18", "20"});
+        if (!PreferencesHM.filters.containsKey(FilterMy.INDEX_AIRLINE)) {
+            PreferencesHM.filters.put(FilterMy.INDEX_AIRLINE, (com.example.searchflight.FilterMy) new com.example.searchflight.FilterMy("arrivalTime", arrTime, new ArrayList()));
+        }
+        List<String> prices = Arrays.asList(new String[]{"0-100", "101-200", "201-300"});
+        if (!PreferencesHM.filters.containsKey(com.example.searchflight.FilterMy.INDEX_PRICE)) {
+            PreferencesHM.filters.put(com.example.searchflight.FilterMy.INDEX_PRICE, (FilterMy) new FilterMy("Price", prices, new ArrayList()));
+        }
+
+//        filterAdapter = new Adapter3Aeroplane(getContext(),PreferencesHM.filters, filterValuesRV);
+//        filterRV.setAdapter(filterAdapter);
+
+
+        resetbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferencesHM.filters.get(FilterMy.INDEX_STOPS).setSelected(new ArrayList());
+                PreferencesHM.filters.get(FilterMy.INDEX_DEPARTURE).setSelected(new ArrayList());
+                PreferencesHM.filters.get(FilterMy.INDEX_ARRIVAL).setSelected(new ArrayList());
+                PreferencesHM.filters.get(FilterMy.INDEX_PRICE).setSelected(new ArrayList());
+                PreferencesHM.filters.get(FilterMy.INDEX_AIRLINE).setSelected(new ArrayList());
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+
+        applybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getContext(), MainActivity.class);
+
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+    }
+
 
 }
 

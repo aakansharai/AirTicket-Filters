@@ -10,41 +10,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.searchflight.FilterMy;
-import com.example.searchflight.Modelclass.Model1Voucher;
+import com.example.searchflight.Item;
 import com.example.searchflight.Modelclass.Model3Aeroplane;
 import com.example.searchflight.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 
-public class Adapter3Aeroplane extends RecyclerView.Adapter<Adapter3Aeroplane.ViewHolder>{
+public class AdapterTestingAeroplane extends RecyclerView.Adapter<AdapterTestingAeroplane.ViewHolder>{
 
-    private ArrayList<Model3Aeroplane> model3Aeroplanes;
-    private HashMap<Integer, FilterMy> filters;
+    private List<Item> model3Aeroplanes;
 
 
-    public Adapter3Aeroplane(ArrayList<Model3Aeroplane> model3Aeroplanes) {
+    public AdapterTestingAeroplane(List<Item> model3Aeroplanes) {
         this.model3Aeroplanes = model3Aeroplanes;
     }
 
     @NonNull
     @Override
-    public Adapter3Aeroplane.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterTestingAeroplane.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item3design,parent,false);
         return new ViewHolder(v);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull Adapter3Aeroplane.ViewHolder holder, int position) {
-        holder.aeroplaneimage.setImageResource(model3Aeroplanes.get(position).getAeroplaneimage());
-        holder.aeroplaneName.setText(model3Aeroplanes.get(position).getAeroplaneName());
-        holder.aeroplaneNonstop.setText(model3Aeroplanes.get(position).getAeroplaneNonstop());
+    public void onBindViewHolder(@NonNull AdapterTestingAeroplane.ViewHolder holder, int position) {
+//        holder.aeroplaneimage.setImageResource(model3Aeroplanes.get(position).get());
+        holder.aeroplaneName.setText(model3Aeroplanes.get(position).getAirline());
+        holder.aeroplaneNonstop.setText(model3Aeroplanes.get(position).getStops());
         holder.aeroplanePrice.setText("₹ "+model3Aeroplanes.get(position).getPrice());
 
-        int stop = model3Aeroplanes.get(position).getStops();
+        int stop = Integer.parseInt(model3Aeroplanes.get(position).getStops());
 
         if(stop==0){
             holder.Stops.setText("Non-Stop");
@@ -54,7 +52,7 @@ public class Adapter3Aeroplane extends RecyclerView.Adapter<Adapter3Aeroplane.Vi
             holder.Stops.setText(stop + " Stops");
         }
 
-        int totalTime = model3Aeroplanes.get(position).getDepartureTime();
+        int totalTime = Integer.parseInt(model3Aeroplanes.get(position).getDepartureTime());
         int hours = totalTime/60;
         int minuts = hours%totalTime;
 

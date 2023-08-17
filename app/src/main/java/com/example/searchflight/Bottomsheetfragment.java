@@ -71,7 +71,7 @@ FrameLayout frameLayout;
 //                viewPager = view.findViewById(R.id.viewpager);
                 crossimage = view.findViewById(R.id.closeimage);
 
-                frameLayout= view.findViewById(R.id.fraamelayoutStopfilter);
+                frameLayout= view.findViewById(R.id.stopFilterFragment);
 
                 tabLayout.addTab(tabLayout.newTab().setText("Departure"));
                 tabLayout.addTab(tabLayout.newTab().setText("Arrival"));

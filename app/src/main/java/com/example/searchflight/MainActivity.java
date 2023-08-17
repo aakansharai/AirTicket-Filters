@@ -1,44 +1,28 @@
 package com.example.searchflight;
 
-import static com.example.searchflight.R.drawable.item4shape;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.annotation.SuppressLint;
-import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.searchflight.Adapterclass.Adapter1voucher;
 import com.example.searchflight.Adapterclass.Adapter2Timing;
 import com.example.searchflight.Adapterclass.Adapter3Aeroplane;
-import com.example.searchflight.FilterFragments.StopfilterFragment;
+import com.example.searchflight.Adapterclass.AdapterTestingAeroplane;
 import com.example.searchflight.Modelclass.Model1Voucher;
 import com.example.searchflight.Modelclass.Model2Timing;
 import com.example.searchflight.Modelclass.Model3Aeroplane;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.prefs.Preferences;
 
@@ -51,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Model2Timing> model2Timings = new ArrayList<>();
     ArrayList<Model3Aeroplane> model3Aeroplanes = new ArrayList<>();
     LinearLayout linearLayoutbtn;
+    List<Item> items = new ArrayList<Item>();
 
     // ----------- S T O P S -------------------------------
     ArrayList<Model3Aeroplane> nonStops = new ArrayList<>();
@@ -153,6 +138,46 @@ public class MainActivity extends AppCompatActivity {
         int i=0;
 
 
+        if (!PreferencesHM.filters.isEmpty()) {
+            ArrayList<Item> filteredItems = new ArrayList<Item>();
+            List<String> stops = PreferencesHM.filters.get(FilterMy.INDEX_STOPS).getSelected();
+            List<String> depTime = PreferencesHM.filters.get(FilterMy.INDEX_DEPARTURE).getSelected();
+            List<String> arrivalTime = PreferencesHM.filters.get(FilterMy.INDEX_ARRIVAL).getSelected();
+            List<String> price = PreferencesHM.filters.get(FilterMy.INDEX_PRICE).getSelected();
+            List<String> airline = PreferencesHM.filters.get(FilterMy.INDEX_AIRLINE).getSelected();
+            for (Item item : items) {
+                boolean stopsMatched = true;
+                if (stops.size() > 0 && !stops.contains(item.getStops())) {
+                    stopsMatched = false;
+                }
+                boolean depTimeMatched = true;
+                if (depTime.size() > 0 && !depTime.contains(item.getDepartureTime().toString())) {
+                    depTimeMatched = false;
+                }
+                boolean priceMatched = true;
+                if (price.size() > 0 && !priceContains(price, item.getPrice())) {
+                    priceMatched = false;
+                }
+                boolean arrMatched = true;
+                if (arrivalTime.size() > 0 && !arrivalTime.contains(item.getArrivalTime().toString())) {
+                    arrMatched = false;
+                }
+                boolean airlineMatched = true;
+                if (airline.size() > 0 && !airline.contains(item.getAirline().toString())) {
+                    airlineMatched = false;
+                }
+                if (stopsMatched && depTimeMatched && priceMatched && arrMatched && airlineMatched) {
+                    filteredItems.add(item);
+                }
+            }
+            items = filteredItems;
+        }
+
+//        AdapterTestingAeroplane adapter3Aeroplane =new AdapterTestingAeroplane(items);
+//        recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//        recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//
+
 
         if(ACCESS_CODE==3200){
             for(i=0; i<model3Aeroplanes.size(); i++){
@@ -228,76 +253,98 @@ public class MainActivity extends AppCompatActivity {
 
 // -----------   D E P A R T U R E    T I M E  -------------------------------
 
-        else if(DEPARTURE_ACCESS_CODE == 7){
+//        else if(DEPARTURE_ACCESS_CODE == 7){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++){
+//                if(model3Aeroplanes.get(i).getDepartureTime()<=480){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+//        else if(DEPARTURE_ACCESS_CODE == 14){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++){
+//                if(model3Aeroplanes.get(i).getDepartureTime()>480 && model3Aeroplanes.get(i).getDepartureTime()<=720){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+//        else if(DEPARTURE_ACCESS_CODE == 23){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++){
+//                if(model3Aeroplanes.get(i).getDepartureTime()>720 && model3Aeroplanes.get(i).getDepartureTime()<=960){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+//        else if(DEPARTURE_ACCESS_CODE == 32){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++) {
+//                if(model3Aeroplanes.get(i).getDepartureTime()>960 && model3Aeroplanes.get(i).getDepartureTime()<=1200){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+//        else if(DEPARTURE_ACCESS_CODE == 43){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++){
+//                if(model3Aeroplanes.get(i).getDepartureTime()>1200 && model3Aeroplanes.get(i).getDepartureTime()<=1439){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+//        else if(DEPARTURE_ACCESS_CODE == 5){
+//            testing.clear();
+//            for(i=0; i<model3Aeroplanes.size(); i++) {
+//                if(model3Aeroplanes.get(i).getDepartureTime()>0 && model3Aeroplanes.get(i).getDepartureTime()<=720){
+//                    testing.add(model3Aeroplanes.get(i));
+//                }
+//            }
+//            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+//            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+//            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+//        }
+        else {
+            Adapter3Aeroplane adapter3Aeroplane =new Adapter3Aeroplane(model3Aeroplanes);
+            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
+            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+        }
+
+        if(ARRIVAL_ACCESS_CODE == 333){
             testing.clear();
             for(i=0; i<model3Aeroplanes.size(); i++){
                 if(model3Aeroplanes.get(i).getDepartureTime()<=480){
                     testing.add(model3Aeroplanes.get(i));
                 }
             }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+            Adapter3Aeroplane adapter3Aeroplane1 = new Adapter3Aeroplane(testing);
             recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else if(DEPARTURE_ACCESS_CODE == 14){
+            recyclerViewAeroplane.setAdapter(adapter3Aeroplane1);
+        } else if(ARRIVAL_ACCESS_CODE == 203){
             testing.clear();
             for(i=0; i<model3Aeroplanes.size(); i++){
-                if(model3Aeroplanes.get(i).getDepartureTime()>480 && model3Aeroplanes.get(i).getDepartureTime()<=720){
+                if(model3Aeroplanes.get(i).getDepartureTime()>480 && model3Aeroplanes.get(i).getDepartureTime()<=1200){
                     testing.add(model3Aeroplanes.get(i));
                 }
             }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
+            Adapter3Aeroplane adapter3Aeroplane1 = new Adapter3Aeroplane(testing);
             recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else if(DEPARTURE_ACCESS_CODE == 23){
-            testing.clear();
-            for(i=0; i<model3Aeroplanes.size(); i++){
-                if(model3Aeroplanes.get(i).getDepartureTime()>720 && model3Aeroplanes.get(i).getDepartureTime()<=960){
-                    testing.add(model3Aeroplanes.get(i));
-                }
-            }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
-            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else if(DEPARTURE_ACCESS_CODE == 32){
-            testing.clear();
-            for(i=0; i<model3Aeroplanes.size(); i++) {
-                if(model3Aeroplanes.get(i).getDepartureTime()>960 && model3Aeroplanes.get(i).getDepartureTime()<=1200){
-                    testing.add(model3Aeroplanes.get(i));
-                }
-            }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
-            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else if(DEPARTURE_ACCESS_CODE == 43){
-            testing.clear();
-            for(i=0; i<model3Aeroplanes.size(); i++){
-                if(model3Aeroplanes.get(i).getDepartureTime()>1200 && model3Aeroplanes.get(i).getDepartureTime()<=1439){
-                    testing.add(model3Aeroplanes.get(i));
-                }
-            }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
-            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else if(DEPARTURE_ACCESS_CODE == 5){
-            testing.clear();
-            for(i=0; i<model3Aeroplanes.size(); i++) {
-                if(model3Aeroplanes.get(i).getDepartureTime()>0 && model3Aeroplanes.get(i).getDepartureTime()<=720){
-                    testing.add(model3Aeroplanes.get(i));
-                }
-            }
-            Adapter3Aeroplane adapter3Aeroplane = new Adapter3Aeroplane(testing);
-            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
-        }
-        else {
-            Adapter3Aeroplane adapter3Aeroplane =new Adapter3Aeroplane(model3Aeroplanes);
-            recyclerViewAeroplane.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL,false));
-            recyclerViewAeroplane.setAdapter(adapter3Aeroplane);
+            recyclerViewAeroplane.setAdapter(adapter3Aeroplane1);
         }
 
 
@@ -313,6 +360,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private boolean priceContains(List<String> prices, Double price) {
+        boolean flag = false;
+        for (String p : prices) {
+            String tmpPrices[] = p.split("-");
+            if (price >= Double.valueOf(tmpPrices[0]) && price <= Double.valueOf(tmpPrices[1])) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
     private void DepartureTimeFilter() {

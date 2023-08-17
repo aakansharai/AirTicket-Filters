@@ -8,6 +8,7 @@ public class FilterMy {
     public static Integer INDEX_DEPARTURE = 1;
     public static Integer INDEX_ARRIVAL = 2;
     public static Integer INDEX_PRICE = 3;
+    public static Integer INDEX_AIRLINE = 4;
 
     private String name;
     private List<String> values;
